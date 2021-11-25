@@ -1,0 +1,25 @@
+Para levantar el backend (Python 3.6 + Fastapi + uvicorn + SqlAlchemy) puede correr el archivo python en el terminal python con:
+python main.py
+
+Para levantar el frontend (nodejs + reactJS) es necesario poner los comandos:
+npm install 
+npm start
+
+Posdata:
+Se escogio como base de datos Sqlite, y se encuentra en la carpeta backend
+
+PARA ABRIR EL SISTEMA TIENE QUE INGRESAR A LA URL
+localhost:4200/
+
+
+-Backend: corre en el localhost:8000/
+python 3.6
+fastapi
+uvicorn
+sqlalchemy
+
+-Frontend: corre en el localhost:4200/
+Reactjs + Nodejs
+
+-Template:
+Boostrap
