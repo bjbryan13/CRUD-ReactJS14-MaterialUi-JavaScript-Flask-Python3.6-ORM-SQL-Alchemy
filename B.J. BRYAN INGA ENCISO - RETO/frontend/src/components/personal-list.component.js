@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PersonalDataService from "../services/personal.service";
-import { Link } from "react-router-dom";
+import { Button, List, ListItem, ListItemText } from "@material-ui/core";
 
 export default class PersonalsList extends Component {
   constructor(props) {
@@ -8,7 +8,8 @@ export default class PersonalsList extends Component {
     this.retrievePersonals = this.retrievePersonals.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActivePersonal = this.setActivePersonal.bind(this);
-    this.deleteTutorial = this.deleteTutorial.bind(this);
+    this.deletePersonal = this.deletePersonal.bind(this);
+    this.editPersonal = this.editPersonal.bind(this);
 
     this.state = {
       Personals: [],
@@ -18,7 +19,7 @@ export default class PersonalsList extends Component {
     
   }
 
-  deleteTutorial() {    
+  deletePersonal() {    
     PersonalDataService.delete(this.state.currentPersonal.id)
       .then(response => {
         console.log(response.data);
@@ -29,6 +30,10 @@ export default class PersonalsList extends Component {
         console.log(e);
       });
   }
+  
+  editPersonal() {    
+        window.location.replace('/update_personal_details/'+this.state.currentPersonal.id)
+    }
 
   
   componentDidMount() {
@@ -64,52 +69,31 @@ export default class PersonalsList extends Component {
     });
   }
 
-  deletePersonal() {
-    var data = {
-      id: this.state.id
-    };
-
-    PersonalDataService.delete(data)
-      .then(response => {
-        this.setState({
-          id: response.data.id,
-          submitted: true
-        });
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  }
-
   render() {
-    const { Personals, currentPersonal, currentIndex } = this.state;
+    const { Personals, currentPersonal } = this.state;
 
     return (
       <div className="list row">
         <div className="col-md-6">
-          <h4>Personals List</h4>
-
-          <ul className="list-group">
-            {Personals &&
+          <h1>Lista de Personal</h1>
+          <List >
+          {Personals &&
               Personals.map((Personal, index) => (
-                <li
-                  className={
-                    "list-group-item " +
-                    (index === currentIndex ? "active" : "")
-                  }
-                  onClick={() => this.setActivePersonal(Personal, index)}
-                  key={index}
-                >
-                  {Personal.nombre}
-                </li>
+          <ListItem button disablePadding onClick={() => this.setActivePersonal(Personal, index)}>
+          <ListItemText  primary={Personal.nombre}  key={index}></ListItemText>
+          </ListItem>
               ))}
-          </ul>
+          </List>
+
         </div>
+
         <div className="col-md-6">
           {currentPersonal ? (
-            <div>
+            <div className="box">
+            
+           <br></br>
               <h4>Personal</h4>
+           <br></br>
               <div>
                 <label>
                   <strong>Nombre:</strong>
@@ -134,22 +118,24 @@ export default class PersonalsList extends Component {
                 </label>{" "}
                 {currentPersonal.fecha_de_nacimiento}
               </div>
-              <Link
-                to={"/update_personal_details/" + currentPersonal.id}
-                className="m3 btn btn-sm btn-warning"
-              >
-                Editar
-              </Link>
+           <br></br>
               
-              
-             <br></br>
-             <br></br>
-            <button
-              className="m3 btn btn-sm btn-danger"
-              onClick={this.deleteTutorial}
+            <Button              
+          color="primary"
+          variant="contained"
+              onClick={this.editPersonal}
             >
-              Delete
-            </button>
+              Editar
+            </Button>
+
+            <Button        
+                style={{ left: 15}}
+            color="secondary"
+          variant="contained"
+              onClick={this.deletePersonal}
+            >
+              Eliminar
+            </Button>
 
 
             </div>

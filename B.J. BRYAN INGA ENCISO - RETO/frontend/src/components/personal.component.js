@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PersonalDataService from "../services/personal.service";
+import { Button, TextField } from "@material-ui/core";
 
 export default class Personal extends Component {
   constructor(props) {
@@ -111,35 +112,43 @@ export default class Personal extends Component {
       <div>
         {currentPersonal ? (
           <div className="edit-form">
-            <h4>Personal</h4>
+            <h4>Actualizando datos del personal</h4>
             <form>
               <div className="form-group">
-                <label htmlFor="nombre">nombre</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="nombre"
-                  value={currentPersonal.nombre}
-                  onChange={this.onChangenombre}
-                />
+              
+              <TextField
+              margin="normal"
+              fullWidth 
+          required
+          id="nombre"
+          label="Nombre"
+          defaultValue="nombre"
+          variant="outlined"
+          value={currentPersonal.nombre}
+          onChange={this.onChangenombre}
+          />
               </div>
               <div className="form-group">
-                <label htmlFor="apellidos">apellidos</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="apellidos"
-                  value={currentPersonal.apellidos}
+                
+              <TextField
+              fullWidth 
+            required
+            id="apellidos"
+            label="Apellidos"
+            defaultValue="apellidos"
+            variant="outlined"
+            value={currentPersonal.apellidos}
                   onChange={this.onChangeapellidos}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="edad">Edad: </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="edad"
+              <TextField
+            fullWidth 
+          required
+          id="edad"
+          label="Edad"
+          variant="outlined"
                   value={currentPersonal.edad}
                   onChange={this.onChangeEdad}
                 />
@@ -147,11 +156,13 @@ export default class Personal extends Component {
 
               
               <div className="form-group">
-                <label htmlFor="fecha_de_nacimiento">Fecha de nacimiento: </label>
-                <input
-                  type="date"
-                  className="form-control"
-                  id="fecha_de_nacimiento"
+              <TextField
+            fullWidth 
+          required
+          id="fecha_de_nacimiento" 
+          label="Fecha de nacimiento "
+          variant="outlined"
+          type="date"
                   value={currentPersonal.fecha_de_nacimiento}
                   onChange={this.onChangefecha_de_nacimiento}
                 />
@@ -159,20 +170,20 @@ export default class Personal extends Component {
 
             </form>
             
-            
-            <button
-              type="submit"
-              className="badge badge-success"
+            <Button 
+            fullWidth
+          color="primary"
+          variant="contained"
               onClick={this.updatePersonal}
             >
-              Update
-            </button>
+              Actualizar
+            </Button>
             <p>{this.state.message}</p>
           </div>
         ) : (
           <div>
             <br />
-            <p>Please click on a Personal...</p>
+            <p>Porfavor clickea para actualizar este personal...</p>
           </div>
         )}
       </div>

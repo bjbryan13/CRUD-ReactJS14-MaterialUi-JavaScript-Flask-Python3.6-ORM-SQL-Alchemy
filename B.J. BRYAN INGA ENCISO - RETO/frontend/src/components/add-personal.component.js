@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PersonalDataService from "../services/personal.service";
+import { Button, TextField } from "@material-ui/core";
 
 export default class AddPersonal extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export default class AddPersonal extends Component {
       nombre: "",
       apellidos: "", 
       edad: "", 
-      fecha_de_nacimiento: "", 
+      fecha_de_nacimiento: "1950-01-01", 
 
       submitted: false
     };
@@ -88,7 +89,7 @@ export default class AddPersonal extends Component {
 
   render() {
     return (
-      <div className="submit-form">
+      <div>
         {this.state.submitted ? (
           <div>
             <h4>Personal añadido con exito!</h4>
@@ -96,61 +97,68 @@ export default class AddPersonal extends Component {
           </div>
         ) : (
           <div>
-            <div className="form-group">
-              <label htmlFor="nombre">Nombre</label>
-              <input
-                type="text"
-                className="form-control"
-                id="nombre"
-                required
-                value={this.state.nombre}
-                onChange={this.onChangePersonal}
-                name="nombre"
-              />
-            </div>
+            <h2>Crea un nuevo personal</h2>
 
-            <div className="form-group">
-              <label htmlFor="apellidos">Apellidos</label>
-              <input
-                type="text"
-                className="form-control"
-                id="apellidos"
-                required
-                value={this.state.apellidos}
-                onChange={this.onChangeApellidos}
-                name="apellidos"
+              <TextField
+              margin="normal"
+              fullWidth 
+          required
+          id="nombre"
+          label="Nombre"
+          defaultValue="nombre"
+          variant="outlined"
+          value={this.state.nombre}
+          onChange={this.onChangePersonal}
               />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="edad">Edad</label>
-              <input
-                type="text"
-                className="form-control"
-                id="edad"
-                required
-                value={this.state.edad}
-                onChange={this.onChangeEdad}
-                name="edad"
+           <br></br>
+             <br></br>
+           
+              <TextField
+              fullWidth 
+          required
+          id="apellidos"
+          label="Apellidos"
+          defaultValue="apellidos"
+          variant="outlined"
+          value={this.state.apellidos}
+          onChange={this.onChangeApellidos}
               />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="fecha_de_nacimiento">Fecha de nacimiento</label>
-              <input
-                type="date"
-                className="form-control"
-                id="fecha_de_nacimiento"
-                required
-                value={this.state.fecha_de_nacimiento}
-                onChange={this.onChangeFecha_de_nacimiento}
-                name="fecha_de_nacimiento"
+              <br></br>
+                <br></br>
+           
+            <TextField
+            fullWidth 
+          required
+          id="edad"
+          label="Edad"
+          variant="outlined"
+          type="number"
+          value={this.state.edad}
+          onChange={this.onChangeEdad}
               />
-            </div>
-
-            <button onClick={this.savePersonal} className="btn btn-success">
-              Submit
-            </button>
+           
+           <br></br>
+             <br></br>
+        <TextField
+            fullWidth 
+          required
+          id="fecha_de_nacimiento" 
+          label="Fecha de nacimiento "
+          variant="outlined"
+          type="date"
+          value={this.state.fecha_de_nacimiento}
+          onChange={this.onChangeFecha_de_nacimiento}
+              />
+              <br></br>
+             <br></br>
+           <br></br>
+            <Button 
+            fullWidth
+          color="primary"
+          variant="contained"
+          onClick={this.savePersonal}>
+              Guardar
+            </Button>
           </div>
         )}
       </div>
