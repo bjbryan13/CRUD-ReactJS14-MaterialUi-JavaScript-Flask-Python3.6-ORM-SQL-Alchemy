@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PersonalDataService from "../services/personal.service";
 import { Button, TextField } from "@material-ui/core";
+import SaveIcon from '@material-ui/icons/Save';
 
 export default class Personal extends Component {
   constructor(props) {
@@ -177,6 +178,7 @@ export default class Personal extends Component {
               onClick={this.updatePersonal}
             >
               Actualizar
+              <SaveIcon />
             </Button>
             <p>{this.state.message}</p>
           </div>

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import PersonalDataService from "../services/personal.service";
-import { Button, List, ListItem, ListItemText } from "@material-ui/core";
+import { Button, List, ListItem, ListItemText, Modal } from "@material-ui/core";
+import EditOutlined from '@material-ui/icons/EditOutlined';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+
 
 export default class PersonalsList extends Component {
   constructor(props) {
@@ -73,13 +76,13 @@ export default class PersonalsList extends Component {
     const { Personals, currentPersonal } = this.state;
 
     return (
-      <div className="list row">
+      <div className="row">
         <div className="col-md-6">
           <h1>Lista de Personal</h1>
-          <List >
+          <List>
           {Personals &&
               Personals.map((Personal, index) => (
-          <ListItem button disablePadding onClick={() => this.setActivePersonal(Personal, index)}>
+          <ListItem style={{ borderRadius : '7px', border : '2px solid rgb(143,0,200)' }} button disablePadding onClick={() => this.setActivePersonal(Personal, index)}>
           <ListItemText  primary={Personal.nombre}  key={index}></ListItemText>
           </ListItem>
               ))}
@@ -87,9 +90,9 @@ export default class PersonalsList extends Component {
 
         </div>
 
-        <div className="col-md-6">
+        <div  style={{ borderRadius : '7px', border : '2px solid rgb(100,0,140)' }} className="col-md-6">
           {currentPersonal ? (
-            <div className="box">
+            <div>
             
            <br></br>
               <h4>Personal</h4>
@@ -123,20 +126,21 @@ export default class PersonalsList extends Component {
             <Button              
           color="primary"
           variant="contained"
-              onClick={this.editPersonal}
-            >
-              Editar
+              onClick={this.editPersonal}>
+              Editar <EditOutlined />
             </Button>
 
             <Button        
-                style={{ left: 15}}
+                style={{ left: 15, backgroundColor : 'red'}}
             color="secondary"
           variant="contained"
               onClick={this.deletePersonal}
             >
-              Eliminar
+              Eliminar <DeleteOutlinedIcon />
             </Button>
 
+            <br />
+              <br />
 
             </div>
           ) : (

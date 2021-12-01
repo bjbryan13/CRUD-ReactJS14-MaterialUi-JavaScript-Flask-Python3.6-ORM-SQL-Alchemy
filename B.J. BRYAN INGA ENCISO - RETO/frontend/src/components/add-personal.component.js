@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PersonalDataService from "../services/personal.service";
 import { Button, TextField } from "@material-ui/core";
+import SaveIcon from '@material-ui/icons/Save';
 
 export default class AddPersonal extends Component {
   constructor(props) {
@@ -157,7 +158,8 @@ export default class AddPersonal extends Component {
           color="primary"
           variant="contained"
           onClick={this.savePersonal}>
-              Guardar
+              Guardar 
+              <SaveIcon />
             </Button>
           </div>
         )}
