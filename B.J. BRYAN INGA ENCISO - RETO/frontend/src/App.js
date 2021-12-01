@@ -7,7 +7,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import AddCircleOutlined from '@material-ui/icons/AddCircleOutlined'
 import HomeOutlined from '@material-ui/icons/HomeOutlined'
-import Icon from '@material-ui/core/Icon';
 import AddPersonal from "./components/add-personal.component";
 import Personal from "./components/personal.component";
 import PersonalList from "./components/personal-list.component";

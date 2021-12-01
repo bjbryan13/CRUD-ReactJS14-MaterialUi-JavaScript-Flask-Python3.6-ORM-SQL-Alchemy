@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PersonalDataService from "../services/personal.service";
-import { Button, List, ListItem, ListItemText, Modal } from "@material-ui/core";
+import { Button, List, ListItem, ListItemText} from "@material-ui/core";
 import EditOutlined from '@material-ui/icons/EditOutlined';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
